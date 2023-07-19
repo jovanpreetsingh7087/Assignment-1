@@ -1,0 +1,117 @@
+import java.util.Stack;
+
+class Book {
+    String title;
+    String author;
+    String isbn;
+
+    public Book(String title, String author, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+    }
+
+    // Getter methods for the properties (not necessary for the assignment, but useful)
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+}
+
+class BookStack {
+    private Stack<Book> stack;
+
+    public BookStack() {
+        stack = new Stack<>();
+    }
+
+    public void push(Book book) {
+        stack.push(book);
+    }
+
+    public Book pop() {
+        return stack.pop();
+    }
+
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+
+    public int size() {
+        return stack.size();
+    }
+
+    public Book peek() {
+        return stack.peek();
+    }
+
+    // Method to walk over the stack and report on the titles of each book
+    public void reportTitles() {
+        System.out.println("Books in the stack:");
+        for (Book book : stack) {
+            System.out.println(book.getTitle());
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BookStack bookStack = new BookStack();
+
+        // Pushing 10 books to the stack
+        bookStack.push(new Book("Enigma of Eternity", "John Smith", "978-1234567890"));
+        bookStack.push(new Book("Shadows in the Mist", "Emily Johnson", "978-9876543210"));
+        bookStack.push(new Book("Beyond the Stars", "Michael Anderson", "978-4567890123"));
+        bookStack.push(new Book("Whispers of the Wind", "Sarah Williams", "978-2109876543"));
+        bookStack.push(new Book("The Lost Artifact", "David Brown", "978-1098765432"));
+        bookStack.push(new Book("Silent Echoes", "Jessica Taylor", "978-3210987654"));
+        bookStack.push(new Book("Tales from the forgotten Realm", "Rober Turner", "978-7654321098"));
+        bookStack.push(new Book("The Hidden Forest", "Olivia Lee", "978-5432109876"));
+        bookStack.push(new Book("Echoes of the Past", "William Davis", "978-8765432109"));
+        bookStack.push(new Book("Whispers of the Moon", "Sophia Clark", "978-2345678901"));
+
+        // Report on the titles of each book in the stack
+        bookStack.reportTitles();
+        System.out.println("Stack size: " + bookStack.size());
+
+
+
+        // Popping a book from the stack
+
+        Book poppedBook = bookStack.pop();
+
+        System.out.println("Popped book: " + poppedBook.title);
+
+        System.out.println("Stack size: " + bookStack.size());
+
+        // Checking if the stack is empty
+
+        System.out.println("Is stack empty? " + bookStack.isEmpty());
+
+
+
+        // Peeking at the top book
+
+        Book topBook = bookStack.peek();
+
+        System.out.println("Top book: " + topBook.title);
+
+        System.out.println("Is stack empty? " + bookStack.isEmpty());
+
+        System.out.println("Stack size: " + bookStack.size());
+
+        System.out.println("Popped book: " + poppedBook.title);
+
+
+
+
+
+    }
+}
