@@ -1,0 +1,51 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class RoundRobinScheduler {
+    private Stack<String> scheduleStack;
+    private Queue<String> datingQueue;
+
+    public RoundRobinScheduler() {
+        scheduleStack = new Stack<>();
+        datingQueue = new LinkedList<>();
+    }
+
+    public void addLadyFriend(String ladyFriend) {
+        datingQueue.add(ladyFriend);
+    }
+
+    public void generateSchedule() {
+        int numLadyFriends = datingQueue.size();
+        int numDays = numLadyFriends * 2;  // Each lady friend gets two dates
+
+        for (int day = 1; day <= numDays; day++) {
+            String currentLadyFriend = datingQueue.poll();
+            scheduleStack.push(currentLadyFriend);
+
+            if (day % numLadyFriends == 0) {
+                while (!scheduleStack.isEmpty()) {
+                    String scheduledLadyFriend = scheduleStack.pop();
+                    System.out.println("Day " + day + ": Josh is dating " + scheduledLadyFriend);
+                    datingQueue.add(scheduledLadyFriend);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        RoundRobinScheduler scheduler = new RoundRobinScheduler();
+
+        // Add lady friends to the scheduler
+        scheduler.addLadyFriend("Ashley");
+        scheduler.addLadyFriend("Christa");
+        scheduler.addLadyFriend("Kim");
+        scheduler.addLadyFriend("Karissa");
+        scheduler.addLadyFriend("Lisa");
+        scheduler.addLadyFriend("Melissa");
+        scheduler.addLadyFriend("Becca");
+
+        // Generate and print the schedule
+        scheduler.generateSchedule();
+    }
+}
